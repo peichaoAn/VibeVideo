@@ -123,13 +123,13 @@
     -moz-osx-font-smoothing: grayscale;
     /* Fallback background painted before Tailwind tokens resolve. Prevents a
        white flash on full-page reloads (the static-export/Electron route
-       navigation path). `.dark`/`.light` override this below. */
-    background-color: #0a0a0b;
+       navigation path). Follows the active mode via semantic tokens so it
+       adapts to both light and dark themes. */
+    background-color: hsl(var(--background));
   }
 
   body {
     @apply bg-background text-foreground;
-    background-color: #0a0a0b;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     /* Unified CJK + Latin font stack. Latin text uses Inter, CJK falls back
        to a well-matched system font stack so zh/en switching does not cause

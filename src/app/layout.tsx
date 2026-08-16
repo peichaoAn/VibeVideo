@@ -144,11 +144,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning style={{ backgroundColor: "#0a0a0b" }}>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: preHydrationScript }} />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`} style={{ backgroundColor: "#0a0a0b" }}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
             <AuthProvider>

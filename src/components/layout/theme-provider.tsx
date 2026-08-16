@@ -43,7 +43,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", mode === "dark");
-    root.classList.toggle("light", mode === "light");
+
+    // The pre-hydration inline script paints an early background color (as an
+    // inline style) to prevent a white/dark flash. Clear those inline styles
+    // once React is in control so the semantic CSS tokens (`.dark` / `:root`)
+    // drive the background and theme switching actually takes effect.
+    root.style.backgroundColor = "";
+    if (document.body) document.body.style.backgroundColor = "";
   }, [mode]);
 
   const setMode = React.useCallback((next: ThemeMode) => {
